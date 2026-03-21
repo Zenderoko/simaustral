@@ -13,16 +13,18 @@ import Layout from "../layouts/Layout.astro";
 
       form?.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const btn = form.querySelector("button[type='submit']") as HTMLButtonElement;
+        const btn = form.querySelector(
+          "button[type='submit']",
+        ) as HTMLButtonElement;
         btn.disabled = true;
         btn.textContent = "Enviando...";
 
         try {
           await emailjs.sendForm(
             "service_92qu6pg",
-            "template_b69ro4b",
+            "template_y7u7i8d",
             form,
-            "KWaoGTpLK6LIExO8T"
+            "KWaoGTpLK6LIExO8T",
           );
           Toastify({
             text: "¡Mensaje enviado! Te contactaremos pronto.",
