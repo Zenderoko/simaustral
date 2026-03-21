@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contacto | SIMAUSTRAL">
+  <script>
+    import emailjs from "@emailjs/browser";
+    import Toastify from "toastify-js";
+    import "toastify-js/src/toastify.css";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.getElementById("contact-form") as HTMLFormElement;
+
+      form?.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector("button[type='submit']") as HTMLButtonElement;
+        btn.disabled = true;
+        btn.textContent = "Enviando...";
+
+        try {
+          await emailjs.sendForm(
+            "service_92qu6pg",
+            "template_b69ro4b",
+            form,
+            "KWaoGTpLK6LIExO8T"
+          );
+          Toastify({
+            text: "¡Mensaje enviado! Te contactaremos pronto.",
+            duration: 4000,
+            gravity: "top",
+            position: "right",
+            style: {
+              background: "#059669",
+            },
+          }).showToast();
+          form.reset();
+        } catch (error) {
+          console.error("Error EmailJS:", error);
+          Toastify({
+            text: "Error al enviar. Intenta de nuevo.",
+            duration: 4000,
+            gravity: "top",
+            position: "right",
+            style: {
+              background: "#dc2626",
+            },
+          }).showToast();
+        } finally {
+          btn.disabled = false;
+          btn.textContent = "Enviar Mensaje";
+        }
+      });
+    });
+  </script>
+  <section class="page-header">
+    <div class="container">
+      <h1>Contacto</h1>
+      <p>¿Necesitas información sobre nuestros servicios? Contáctanos.</p>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-item">
+            <h3>Dirección</h3>
+            <p>El Estero Nro 60, Dalcahue, Chiloé</p>
+          </div>
+          <div class="info-item">
+            <h3>Teléfono</h3>
+            <p>+56979799006</p>
+          </div>
+          <div class="info-item">
+            <h3>Horario</h3>
+            <p>Lunes a Viernes<br />08:30 - 18:30</p>
+          </div>
+        </div>
+
+        <form id="contact-form" class="contact-form">
+          <h2>Envíanos un mensaje</h2>
+          <div id="form-status"></div>
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="from_name" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="from_email" required />
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="tel" id="telefono" name="from_phone" />
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .page-header {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2d5a87 100%);
+    color: #fff;
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  .page-header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    opacity: 0.9;
+  }
+
+  .contact-section {
+    padding: 4rem 2rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .info-item {
+    margin-bottom: 2rem;
+  }
+
+  .info-item h3 {
+    color: #1e3a5f;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .info-item p {
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  .contact-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .contact-form h2 {
+    color: #1e3a5f;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .form-group label {
+    display: block;
+    color: #374151;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: #1e3a5f;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: #1e3a5f;
+    color: #fff;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .submit-btn:hover {
+    background: #2d5a87;
+  }
+
+  #form-status {
+    margin-bottom: 1rem;
+  }
+
+  #form-status p {
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 0;
+  }
+
+  #form-status .success {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  #form-status .error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+
+  @media (max-width: 768px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
