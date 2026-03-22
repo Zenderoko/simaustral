@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import BalsasImg from "../../assets/balsas.jpeg";
 import Balsas2Img from "../../assets/balsas2.jpeg";
 
 const servicios = [
@@ -76,14 +77,14 @@ const faqs = [
         <div class="main-column">
           <section class="hero-image">
             <img
-              src="https://images.pexels.com/photos/5216117/pexels-photo-5216117.jpeg"
-              alt="Barco en el mar"
+              src={Balsas2Img.src}
+              alt="Balsas Salvavidas"
             />
           </section>
 
           <section class="bento-grid">
             <div class="bento-card bento-highlight">
-              <img src={Balsas2Img.src} alt="Balsas Salvavidas" class="balsa-img" />
+              <img src={BalsasImg.src} alt="Balsas Salvavidas" class="balsa-img" />
               <h3>Balsas Salvavidas</h3>
               <p>
                 <span class="subs"
