@@ -1,48 +1,26 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import Balsas2Img from '../../assets/balsas2.jpeg';
 
 const servicios = [
   {
     titulo: "Mantención y Certificación de Balsas Salvavidas",
     descripcion: "Servicio técnico autorizado para inspección, certificación y mantención con cumplimiento SOLAS y directivas de la Autoridad Marítima de Chile.",
-    icono: "🚢",
+    icono: Balsas2Img.src,
     link: "/servicios/balsas-salvavidas"
   },
   {
     titulo: "Mantención y Certificación de Extintores de Incendio",
     descripcion: "Recarga, mantenimiento y certificación de extintores según DS 44 y normativa vigente.",
     icono: "🔥",
-    link: "/servicios/extintores"
+    link: "/servicios/extintores",
+    enProceso: true
   },
   {
-    titulo: "Mantención y Certificación de Botes Salvavidas",
-    descripcion: "Inspección, certificación y reparación de botes salvavidas según normativas internacionales.",
-    icono: "🛶",
-    link: "/servicios/botes-salvavidas"
-  },
-  {
-    titulo: "Mantención y Certificación de Equipos de Protección Personal",
-    descripcion: "Inspección, mantenimiento y pruebas de equipos de protección personal (EPP).",
-    icono: "🦺",
-    link: "/servicios/epp"
-  },
-  {
-    titulo: "Certificación de Sistemas Fijos de Extinción",
-    descripcion: "Inspección, mantención y certificación de sistemas fijos de extinción de incendios.",
-    icono: "🚨",
-    link: "/servicios/sistemas-fijos"
-  },
-  {
-    titulo: "Certificación de Pruebas de Carga y Grúas",
-    descripcion: "Pruebas de carga certificadas para grúas y pescantes según normativas.",
-    icono: "⚖️",
-    link: "/servicios/pruebas-carga"
-  },
-  {
-    titulo: "Prácticas de Manejo de Extintores",
-    descripcion: "Capacitación práctica en uso de extintores de incendio para personal naval.",
-    icono: "📚",
-    link: "/servicios/practicas-extintores"
+    titulo: "Mantención, Reparación y Certificación de Trajes de Inmersión",
+    descripcion: "Inspección técnica, pruebas funcionales y certificación de trajes de inmersión según normativa MSC/Circ.1114.",
+    icono: "🤿",
+    link: "/servicios/trajes-inmersion"
   }
 ];
 ---
@@ -59,11 +37,20 @@ const servicios = [
     <div class="container">
       <div class="servicios-grid">
         {servicios.map((servicio) => (
-          <a href={servicio.link} class="servicio-card">
-            <div class="servicio-icon">{servicio.icono}</div>
+          <a href={servicio.link} class={`servicio-card ${servicio.enProceso ? 'en-proceso' : ''}`}>
+            {servicio.enProceso && (
+              <div class="badge-proceso">
+                <span class="badge-text">PRONTO</span>
+              </div>
+            )}
+            {servicio.icono.includes('.') ? (
+              <img src={servicio.icono} alt={servicio.titulo} class="servicio-icon-img" />
+            ) : (
+              <div class="servicio-icon">{servicio.icono}</div>
+            )}
             <h3>{servicio.titulo}</h3>
             <p>{servicio.descripcion}</p>
-            <span class="servicio-link">Ver más →</span>
+            <span class="servicio-link">{servicio.enProceso ? 'Ver más →' : 'Ver más →'}</span>
           </a>
         ))}
       </div>
@@ -126,12 +113,85 @@ const servicios = [
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
   }
 
   .servicio-card:hover {
     border-color: #1e3a5f;
     box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
     transform: translateY(-4px);
+  }
+
+  .servicio-card.en-proceso {
+    border-color: #f59e0b;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  }
+
+  .servicio-card.en-proceso:hover {
+    border-color: #d97706;
+    box-shadow: 0 8px 30px rgba(245, 158, 11, 0.2);
+  }
+
+  .servicio-card.en-proceso::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+
+  .servicio-card.en-proceso .servicio-icon,
+  .servicio-card.en-proceso h3,
+  .servicio-card.en-proceso p {
+    opacity: 0.5;
+    filter: blur(1px);
+  }
+
+  .servicio-card.en-proceso:hover .servicio-icon,
+  .servicio-card.en-proceso:hover h3,
+  .servicio-card.en-proceso:hover p {
+    opacity: 0.7;
+    filter: blur(0.5px);
+  }
+
+  .badge-proceso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.5);
+    z-index: 10;
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
   }
 
   .servicio-icon {
@@ -156,6 +216,14 @@ const servicios = [
     color: #1e3a5f;
     font-weight: 600;
     font-size: 0.875rem;
+  }
+
+  .servicio-icon-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 1rem;
   }
 
   .cta {

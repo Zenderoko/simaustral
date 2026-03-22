@@ -1,44 +1,61 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import TrajeInmersionImg from "../../assets/traje-inmersion.png";
 
 const servicios = [
-  { titulo: "Balsas Salvavidas", link: "/servicios/balsas-salvavidas" },
-  { titulo: "Extintores", link: "/servicios/extintores" },
-  { titulo: "EPP", link: "/servicios/epp" },
-  { titulo: "Sistemas Fijos", link: "/servicios/sistemas-fijos" },
-  { titulo: "Pruebas de Carga", link: "/servicios/pruebas-carga" },
-  { titulo: "Prácticas Extintores", link: "/servicios/practicas-extintores" },
+  { titulo: "Cargas de Botellas CO2", link: "co2-modal" },
+  {
+    titulo: "Consultorías Marítimas",
+    link: "https://www.geamar.cl",
+    external: true,
+  },
+  {
+    titulo: "Capacitación de Seguridad Marítima",
+    link: "https://primepatagonia.cl",
+    external: true,
+  },
 ];
+
+const co2Info = {
+  titulo: "Carga de Botellas CO2",
+  descripcion: "Servicio especializado de recarga de extintores y botellas de CO2 para equipos de seguridad marítima. Cumplimos con los más altos estándares de calidad y normativas vigentes.",
+  caracteristicas: [
+    { icono: "🔋", titulo: "Recarga Profesional", descripcion: "Uso de CO2 de alta pureza para garantizar la efectividad del agente extintor" },
+    { icono: "✓", titulo: "Certificación", descripcion: "Documentación y certificación de cada carga realizada" },
+    { icono: "⚡", titulo: "Rápido Turno", descripcion: "Procesos eficientes para minimizar el tiempo de espera" },
+    { icono: "📋", titulo: "Normativa DS 44", descripcion: "Cumplimiento total con el Decreto Supremo 44 y normativas marítimas" },
+  ]
+};
 
 const faqs = [
   {
-    pregunta: "¿Cada cuánto se certifica el bote?",
+    pregunta: "¿Cada cuánto se revisa un traje de inmersión?",
     respuesta:
-      "Generalmente una vez al año, según normativas SOLAS y disposiciones de la Autoridad Marítima.",
+      "De acuerdo con MSC/Circ.1114, los trajes deben someterse a pruebas de presión de aire para detectar fugas ocultas cada 3 años.",
   },
   {
     pregunta: "¿Qué pruebas realizan?",
     respuesta:
-      "Inspección visual, pruebas de inflado, prueba de estabilidad y verificación de mecanismos.",
+      "Pruebas de inflado, buscando grietas, roturas o costuras despegadas",
   },
   {
-    pregunta: "¿Realizan reparaciones?",
+    pregunta: "¿Qué vida útil un traje de inmersión?",
     respuesta:
-      "Sí, realizamos reparaciones y reemplazo de componentes dañados.",
+      "Generalmente, los trajes tienen una vida útil de aproximadamente 10 años, tras lo cual la inspección anual podría no ser rentable.",
   },
 ];
 ---
 
-<Layout title="Mantención y Certificación de Botes Salvavidas | SIMAUSTRAL">
+<Layout title="Trajes de Inmersión | SIMAUSTRAL">
   <section class="page-header">
     <div class="container">
       <nav class="breadcrumbs">
-        <a href="/">Home</a> / <a href="/servicios">Servicios</a> / Botes Salvavidas
+        <a href="/">Inicio</a> / <a href="/servicios">Servicios</a> / Trajes de Inmersión
       </nav>
-      <h1>Mantención y Certificación de Botes Salvavidas</h1>
+      <h1>Mantención, Reparación y Certificación de Trajes de Inmersión</h1>
       <p class="subtitle">
-        Inspección, certificación y reparación de botes salvavidas según
-        normativas internacionales.
+        Servicios especializados para garantizar la seguridad y operatividad de
+        los trajes de inmersión según normativas internacionales.
       </p>
     </div>
   </section>
@@ -49,55 +66,66 @@ const faqs = [
         <div class="main-column">
           <section class="hero-image">
             <img
-              src="https://images.pexels.com/photos/36305136/pexels-photo-36305136.jpeg"
-              alt="Botes salvavidas"
+              src={TrajeInmersionImg.src}
+              alt="Trajes de inmersión"
             />
           </section>
 
           <section class="bento-grid">
             <div class="bento-card bento-highlight">
-              <div class="bento-icon">🛶</div>
-              <h3>Botes Salvavidas</h3>
+              <div class="bento-icon">🤿</div>
+              <h3>Trajes de Inmersión</h3>
               <p>
                 <span class="subs">
-                  Inspección, certificación y reparación según normativas SOLAS.
+                  Mantención, reparación y certificación según normativas SOLAS
+                  y MSC/Circ.1114.
                 </span>
               </p>
             </div>
             <div class="bento-card">
               <div class="bento-icon">🔍</div>
               <h4>Inspección Técnica</h4>
-              <p>Evaluación de casco, estructura, flotación y accesorios.</p>
+              <p>
+                Inspección Visual y Estanqueidad del traje para garantizar su
+                integridad.
+              </p>
             </div>
             <div class="bento-card">
               <div class="bento-icon">⚡</div>
               <h4>Pruebas Funcionales</h4>
-              <p>Inflado, estabilidad y mecanismos de lanzado.</p>
+              <p>
+                Pruebas a Cierres, válvulas y sellos para asegurar su correcto
+                funcionamiento.
+              </p>
             </div>
             <div class="bento-card bento-wide">
               <div class="bento-icon">🔧</div>
-              <h4>Mantención y Reparación</h4>
+              <h4>Prueba de Presión de Aire</h4>
               <p>
-                Reemplazo de componentes y reparaciones estructurales. Emisión
-                de certificado y rotulado conforme.
+                Pruebas técnicas según la normativa MSC/Circ.1114 para
+                garantizar la estanqueidad y seguridad del traje.
               </p>
             </div>
           </section>
 
           <section class="tipos">
-            <h2>Tipos de botes que atendemos</h2>
+            <h2>Tipos de servicios que ofrecemos</h2>
             <div class="tipos-grid">
               <div class="tipo-item">
-                <span class="tipo-icon">🚤</span>
-                <span>Botes rígidos</span>
+                <span class="tipo-icon">🔎</span>
+                <span>Inspección Visual</span>
               </div>
               <div class="tipo-item">
-                <span class="tipo-icon">🎈</span>
-                <span>Botes inflables</span>
+                <span class="tipo-icon">💧</span>
+                <span>Prueba de Estanqueidad</span>
               </div>
               <div class="tipo-item">
-                <span class="tipo-icon">🚁</span>
-                <span>Botes de emergencia</span>
+                <span class="tipo-icon">🔒</span>
+                <span>Prueba de Cierres y Válvulas</span>
+              </div>
+              <div class="tipo-item">
+                <span class="tipo-icon">🔩</span>
+                <span>Prueba de Presión de Aire</span>
               </div>
             </div>
           </section>
@@ -141,7 +169,15 @@ const faqs = [
               {
                 servicios.map((s) => (
                   <li>
-                    <a href={s.link}>{s.titulo}</a>
+                    <a
+                      href={s.link === "co2-modal" ? "#" : s.link}
+                      class={s.link === "co2-modal" ? "open-modal" : ""}
+                      target={s.external ? "_blank" : "_self"}
+                      rel={s.external ? "noopener noreferrer" : ""}
+                      data-modal="co2"
+                    >
+                      {s.titulo}
+                    </a>
                   </li>
                 ))
               }
@@ -151,11 +187,50 @@ const faqs = [
       </div>
     </div>
   </section>
+
+  <div id="co2-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close">&times;</button>
+      <h2 class="modal-title">🔋 Carga de Botellas CO2</h2>
+      <p class="modal-description">Servicio especializado de recarga de extintores y botellas de CO2 para equipos de seguridad marítima. Cumplimos con los más altos estándares de calidad y normativas vigentes.</p>
+      
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="bento-icon">🔋</div>
+          <h4>Recarga Profesional</h4>
+          <p>Uso de CO2 de alta pureza para garantizar la efectividad del agente extintor</p>
+        </div>
+        <div class="bento-card">
+          <div class="bento-icon">✓</div>
+          <h4>Certificación</h4>
+          <p>Documentación y certificación de cada carga realizada</p>
+        </div>
+        <div class="bento-card">
+          <div class="bento-icon">⚡</div>
+          <h4>Rápido Turno</h4>
+          <p>Procesos eficientes para minimizar el tiempo de espera</p>
+        </div>
+        <div class="bento-card">
+          <div class="bento-icon">📋</div>
+          <h4>Normativa DS 44</h4>
+          <p>Cumplimiento total con el Decreto Supremo 44 y normativas marítimas</p>
+        </div>
+      </div>
+      
+      <div class="modal-cta">
+        <a href="/contacto" class="cta-button">Solicitar Cotización</a>
+        <a href="https://wa.me/56979799006" target="_blank" class="whatsapp-button">
+          <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+          Contactar por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
 </Layout>
 
 <style>
   .subs {
-    color: #c3c4c4;
+    color: #d1d5db;
     font-size: 0.875rem;
     line-height: 1.5;
     margin: 0;
@@ -273,7 +348,7 @@ const faqs = [
   }
   .tipos-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
   }
   .tipo-item {
@@ -425,7 +500,122 @@ const faqs = [
       text-align: center;
     }
     .tipos-grid {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
   }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .modal-overlay.active {
+    display: flex;
+  }
+  .modal-content {
+    background: #fff;
+    border-radius: 16px;
+    padding: 2rem;
+    max-width: 700px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlide 0.3s ease;
+  }
+  @keyframes modalSlide {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.2s;
+  }
+  .modal-close:hover {
+    color: #1e3a5f;
+  }
+  .modal-title {
+    color: #1e3a5f;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .modal-description {
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  .modal-cta {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .modal-cta .cta-button {
+    background: #1e3a5f;
+    color: #fff;
+    text-align: center;
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+  .modal-cta .cta-button:hover {
+    background: #2d5a87;
+  }
+  .modal-cta .whatsapp-button {
+    animation: none;
+  }
 </style>
+
+<script>
+  const modal = document.getElementById('co2-modal');
+  const modalTriggers = document.querySelectorAll('.open-modal[data-modal="co2"]');
+  const closeBtn = modal?.querySelector('.modal-close');
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal?.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn?.addEventListener('click', () => {
+    modal?.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+
+  modal?.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal?.classList.contains('active')) {
+      modal?.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
