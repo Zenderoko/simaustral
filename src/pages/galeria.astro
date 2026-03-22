@@ -8,8 +8,8 @@ import MantencionImg from "../assets/Mantencion balsa.jpeg";
 const images = [
   {
     src: BalsasImg.src,
-    alt: "Balsas de salvamento",
-    title: "Balsas de Salvamento",
+    alt: "Balsas Salvavidas",
+    title: "Balsas Salvavidas",
     desc: "Reparación y mantenimiento de balsas inflables certificadas para máxima seguridad en alta mar.",
   },
   {
@@ -36,7 +36,7 @@ const images = [
 <Layout title="Galería | SIMAUSTRAL">
   <section class="page-header">
     <div class="header-content">
-      <div class="lottie-container">
+      <!-- <div class="lottie-container">
         <script
           src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"
         ></script>
@@ -47,7 +47,7 @@ const images = [
           style="width: 80px; height: 80px;"
           loop
           autoplay></lottie-player>
-      </div>
+      </div> -->
       <div class="header-text">
         <h1>Galería</h1>
         <p>Conoce nuestros trabajos y servicios en imágenes</p>
@@ -252,7 +252,7 @@ const images = [
             <span class="stat-label">Balsas mantenidas</span>
           </div>
           <div class="stat">
-            <span class="stat-number" data-target="100">0</span>
+            <span class="stat-number no-symbol" data-target="100">0</span>
             <span class="stat-label">% Compromiso</span>
           </div>
         </div>
@@ -554,10 +554,14 @@ const images = [
     margin-bottom: 0.25rem;
   }
 
-  .stat-number::after {
+  .stat-number:not(.no-symbol)::before {
     content: "+";
     font-size: 1.5rem;
     margin-left: 2px;
+  }
+
+  .stat-number.no-symbol::before {
+    display: none;
   }
 
   .stat-label {

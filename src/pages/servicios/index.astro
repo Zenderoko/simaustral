@@ -1,27 +1,31 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import Balsas2Img from '../../assets/balsas2.jpeg';
+import Layout from "../../layouts/Layout.astro";
+import Balsas2Img from "../../assets/balsas2.jpeg";
+import InmersionImg from "../../assets/inmersion2.jpeg";
 
 const servicios = [
   {
     titulo: "Mantención y Certificación de Balsas Salvavidas",
-    descripcion: "Servicio técnico autorizado para inspección, certificación y mantención con cumplimiento SOLAS y directivas de la Autoridad Marítima de Chile.",
+    descripcion:
+      "Servicio técnico autorizado para inspección, certificación y mantención con cumplimiento SOLAS y directivas de la Autoridad Marítima de Chile.",
     icono: Balsas2Img.src,
-    link: "/servicios/balsas-salvavidas"
+    link: "/servicios/balsas-salvavidas",
   },
   {
     titulo: "Mantención y Certificación de Extintores de Incendio",
-    descripcion: "Recarga, mantenimiento y certificación de extintores según DS 44 y normativa vigente.",
+    descripcion:
+      "Recarga, mantenimiento y certificación de extintores según DS 44 y normativa vigente.",
     icono: "🔥",
     link: "/servicios/extintores",
-    enProceso: true
+    enProceso: true,
   },
   {
     titulo: "Mantención, Reparación y Certificación de Trajes de Inmersión",
-    descripcion: "Inspección técnica, pruebas funcionales y certificación de trajes de inmersión según normativa MSC/Circ.1114.",
-    icono: "🤿",
-    link: "/servicios/trajes-inmersion"
-  }
+    descripcion:
+      "Inspección técnica, pruebas funcionales y certificación de trajes de inmersión según normativa MSC/Circ.1114.",
+    icono: InmersionImg.src,
+    link: "/servicios/trajes-inmersion",
+  },
 ];
 ---
 
@@ -29,30 +33,44 @@ const servicios = [
   <section class="hero">
     <div class="hero-content">
       <h1>Nuestros Servicios</h1>
-      <p>Servicios de certificación, inspección, mantención y reparación de equipos marítimos con cumplimiento normativo nacional e internacional.</p>
+      <p>
+        Servicios de certificación, inspección, mantención y reparación de
+        equipos marítimos con cumplimiento normativo nacional e internacional.
+      </p>
     </div>
   </section>
 
   <section class="servicios-section">
     <div class="container">
       <div class="servicios-grid">
-        {servicios.map((servicio) => (
-          <a href={servicio.link} class={`servicio-card ${servicio.enProceso ? 'en-proceso' : ''}`}>
-            {servicio.enProceso && (
-              <div class="badge-proceso">
-                <span class="badge-text">PRONTO</span>
-              </div>
-            )}
-            {servicio.icono.includes('.') ? (
-              <img src={servicio.icono} alt={servicio.titulo} class="servicio-icon-img" />
-            ) : (
-              <div class="servicio-icon">{servicio.icono}</div>
-            )}
-            <h3>{servicio.titulo}</h3>
-            <p>{servicio.descripcion}</p>
-            <span class="servicio-link">{servicio.enProceso ? 'Ver más →' : 'Ver más →'}</span>
-          </a>
-        ))}
+        {
+          servicios.map((servicio) => (
+            <a
+              href={servicio.link}
+              class={`servicio-card ${servicio.enProceso ? "en-proceso" : ""}`}
+            >
+              {servicio.enProceso && (
+                <div class="badge-proceso">
+                  <span class="badge-text">PRONTO</span>
+                </div>
+              )}
+              {servicio.icono.includes(".") ? (
+                <img
+                  src={servicio.icono}
+                  alt={servicio.titulo}
+                  class="servicio-icon-img"
+                />
+              ) : (
+                <div class="servicio-icon">{servicio.icono}</div>
+              )}
+              <h3>{servicio.titulo}</h3>
+              <p>{servicio.descripcion}</p>
+              <span class="servicio-link">
+                {servicio.enProceso ? "Ver más →" : "Ver más →"}
+              </span>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
@@ -60,7 +78,9 @@ const servicios = [
   <section class="cta">
     <div class="cta-content">
       <h2>¿Necesitas una cotización?</h2>
-      <p>Contáctanos para recibir información sobre nuestros servicios y precios.</p>
+      <p>
+        Contáctanos para recibir información sobre nuestros servicios y precios.
+      </p>
       <a href="/contacto" class="cta-button">Solicitar Cotización</a>
     </div>
   </section>
@@ -140,7 +160,12 @@ const servicios = [
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(245, 158, 11, 0.1),
+      transparent
+    );
     animation: shimmer 2s infinite;
   }
 
@@ -186,7 +211,8 @@ const servicios = [
   }
 
   @keyframes pulse-badge {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate(-50%, -50%) scale(1);
     }
     50% {
