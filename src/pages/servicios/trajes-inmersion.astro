@@ -3,9 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import TrajeInmersionImg from "../../assets/traje-inmersion.png";
 import LogoGeamarImg from "../../assets/logo-geamar.png";
 import LogoPrimeImg from "../../assets/logo-prime-patagonia.jpg";
+import LogoCo2 from "../../assets/co2.jpeg";
 
 const servicios = [
-  { titulo: "Cargas de Botellas CO2", link: "co2-modal" },
+  { titulo: "Cargas de Botellas CO2", link: "co2-modal", logo: LogoCo2.src },
   {
     titulo: "Consultorías Marítimas",
     link: "https://www.geamar.cl",
@@ -501,6 +502,7 @@ const faqs = [
     border: 1px solid #e5e7eb;
     border-radius: 16px;
     padding: 1.5rem;
+    transition: all 0.3s ease;
   }
   .otros-servicios h3 {
     color: #1e3a5f;
@@ -521,6 +523,12 @@ const faqs = [
     display: flex;
     align-items: center;
     gap: 0.5rem;
+  }
+
+  .otros-servicios:hover {
+    border-color: #1e3a5f;
+    box-shadow: 0 8px 30px rgba(30, 58, 95, 0.1);
+    transform: translateY(-4px);
   }
   .otros-servicios a:hover {
     color: #1e3a5f;

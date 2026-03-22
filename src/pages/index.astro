@@ -7,6 +7,12 @@ import Balsas2Img from "../assets/balsas2.jpeg";
   <section class="hero">
     <div class="hero-content">
       <h1>Certificación y Mantención de Equipos Marítimos</h1>
+      <div class="lema-container">
+        <span class="lema-text">SIMAUSTRAL</span>
+        <span class="lema-subtext"
+          >donde la supervivencia en la mar es prioridad</span
+        >
+      </div>
       <p>Servicios especializados con cumplimiento SOLAS</p>
       <div class="hero-buttons">
         <a href="/servicios" class="btn-primary">Ver Servicios</a>
@@ -50,8 +56,8 @@ import Balsas2Img from "../assets/balsas2.jpeg";
           <div class="feature-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              width="28"
+              height="28"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -59,13 +65,10 @@ import Balsas2Img from "../assets/balsas2.jpeg";
               stroke-linecap="round"
               stroke-linejoin="round"
             >
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-              <path d="M12 2v2"></path>
-              <path d="M12 8v1"></path>
-              <path d="M4.93 4.93l1.41 1.41"></path>
-              <path d="M7.76 7.76L9.17 9.17"></path>
-              <path d="M2 12h2"></path>
+              <path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 7.65l.78.77 7.65 7.65 7.65-7.65.78-.77a5.4 5.4 0 0 0 0-7.65z"></path>
+              <path d="M8 12s1.5 2 4 2 4-2 4-2"></path>
+              <line x1="9" y1="9" x2="9" y2="9.01"></line>
+              <line x1="15" y1="9" x2="15" y2="9.01"></line>
             </svg>
           </div>
           <h3>Confianza</h3>
@@ -134,14 +137,19 @@ import Balsas2Img from "../assets/balsas2.jpeg";
       <h2>Nuestros Servicios</h2>
       <div class="servicios-list">
         <a href="/servicios/balsas-salvavidas" class="servicio-item">
-          <img src={Balsas2Img.src} alt="Balsas Salvavidas" class="servicio-img" />
+          <img
+            src={Balsas2Img.src}
+            alt="Balsas Salvavidas"
+            class="servicio-img"
+          />
           <div class="servicio-info">
             <h3>Balsas Salvavidas</h3>
             <p>Inspección, certificación y mantención</p>
           </div>
         </a>
-        <a href="/servicios/extintores" class="servicio-item">
+        <a href="#" class="servicio-item en-proceso">
           <span class="servicio-icon">🔥</span>
+          <div class="badge-proceso">PRONTO</div>
           <div class="servicio-info">
             <h3>Extintores de Incendio</h3>
             <p>Recarga y certificación DS 44</p>
@@ -191,8 +199,62 @@ import Balsas2Img from "../assets/balsas2.jpeg";
 
   .hero h1 {
     font-size: 2.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     line-height: 1.2;
+  }
+
+  .lema-container {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    animation: fadeInScale 1s ease-out;
+  }
+
+  .lema-text {
+    font-family: "Georgia", serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .lema-subtext {
+    font-family: "Georgia", serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffd700;
+    font-style: italic;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.5s forwards;
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   .hero p {
@@ -235,7 +297,7 @@ import Balsas2Img from "../assets/balsas2.jpeg";
     background: rgba(255, 255, 255, 0.1);
   }
 
-.features {
+  .features {
     padding: 5rem 2rem;
     background: #fff;
   }
@@ -282,6 +344,12 @@ import Balsas2Img from "../assets/balsas2.jpeg";
     justify-content: center;
     margin-bottom: 1.25rem;
     transition: transform 0.3s ease;
+  }
+
+  .feature-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
   }
 
   .feature-card:hover .feature-icon {
@@ -341,6 +409,63 @@ import Balsas2Img from "../assets/balsas2.jpeg";
   .servicio-item:hover {
     border-color: #1e3a5f;
     transform: translateX(4px);
+  }
+
+  .servicio-item.en-proceso {
+    position: relative;
+    border-color: #f59e0b;
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    cursor: default;
+    overflow: hidden;
+  }
+
+  .servicio-item.en-proceso::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  .servicio-item.en-proceso .servicio-icon,
+  .servicio-item.en-proceso .servicio-info {
+    opacity: 0.5;
+    filter: blur(0.5px);
+  }
+
+  .servicio-item.en-proceso:hover {
+    transform: none;
+  }
+
+  .badge-proceso {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 2px 10px rgba(245, 158, 11, 0.4);
+    z-index: 10;
+    animation: pulse-badge 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-badge {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.05); }
   }
 
   .servicio-icon {
@@ -420,6 +545,71 @@ import Balsas2Img from "../assets/balsas2.jpeg";
   @media (max-width: 1100px) {
     .features-grid {
       grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 4rem 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+
+    .lema-text {
+      font-size: 1.5rem;
+    }
+
+    .lema-subtext {
+      font-size: 0.9rem;
+    }
+
+    .lema-container {
+      padding: 1rem 1.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .features {
+      padding: 3rem 1.5rem;
+    }
+
+    .features h2 {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .servicios-preview {
+      padding: 3rem 1.5rem;
+    }
+
+    .servicios-preview h2 {
+      font-size: 1.5rem;
+    }
+
+    .servicios-list {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-cta {
+      padding: 3rem 1.5rem;
+    }
+
+    .contact-cta h2 {
+      font-size: 1.5rem;
     }
   }
 

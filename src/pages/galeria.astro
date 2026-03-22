@@ -628,8 +628,13 @@ const images = [
       gap: 1rem;
     }
 
+    .lottie-container {
+      display: none;
+    }
+
     .bento-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     .intro-card,
@@ -639,6 +644,51 @@ const images = [
 
     .gallery-card:not(.large) .image-wrapper {
       height: 200px;
+    }
+
+    .gallery-card.large .image-wrapper {
+      height: 200px;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .header-text h1 {
+      font-size: 1.5rem;
+    }
+
+    .gallery-section {
+      padding: 2rem 1rem;
+    }
+
+    .card-content h3 {
+      font-size: 0.95rem;
+    }
+
+    .card-content p {
+      font-size: 0.8rem;
+    }
+
+    .stats-card {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 80px;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
     }
   }
 </style>
