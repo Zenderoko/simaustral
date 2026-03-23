@@ -8,7 +8,7 @@ import Layout from "../layouts/Layout.astro";
     import Toastify from "toastify-js";
     import "toastify-js/src/toastify.css";
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("astro:page-load", () => {
       const form = document.getElementById("contact-form") as HTMLFormElement;
 
       form?.addEventListener("submit", async (e) => {

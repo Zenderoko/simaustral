@@ -327,8 +327,10 @@ const images = [
   </div>
 
   <script is:inline>
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("astro:page-load", function () {
       var lightbox = document.getElementById("lightbox");
+      if (!lightbox) return;
+
       var lightboxImg = lightbox.querySelector("img");
       var closeBtn = lightbox.querySelector(".close-btn");
 
@@ -377,26 +379,6 @@ const images = [
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
             entry.target.classList.add("visible");
-
-            if (entry.target.classList.contains("stats-card")) {
-              var counters = entry.target.querySelectorAll(".stat-number");
-              counters.forEach(function (counter) {
-                var target = parseInt(
-                  counter.getAttribute("data-target") || "0",
-                );
-                var current = 0;
-                var increment = target / 50;
-                var timer = setInterval(function () {
-                  current += increment;
-                  if (current >= target) {
-                    counter.textContent = target.toString();
-                    clearInterval(timer);
-                  } else {
-                    counter.textContent = Math.floor(current).toString();
-                  }
-                }, 30);
-              });
-            }
 
             observer.unobserve(entry.target);
           }
