@@ -205,10 +205,25 @@ const { title } = Astro.props;
     .header-container {
       flex-direction: column;
       gap: 1rem;
+      padding: 0.75rem 1rem;
     }
 
     .nav {
-      gap: 1rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav a {
+      font-size: 16px;
+    }
+
+    .logo-text {
+      font-size: 28px;
+    }
+
+    .logo-img {
+      width: 70px;
     }
   }
 </style>
