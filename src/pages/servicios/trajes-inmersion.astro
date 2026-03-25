@@ -967,36 +967,43 @@ m84 -25 c-3 -10 -5 -4 -5 12 0 17 2 24 5 18 2 -7 2 -21 0 -30z m-250 5 c-3 -8
 </style>
 
 <script>
-  const modal = document.getElementById("co2-modal");
-  const modalTriggers = document.querySelectorAll(
-    '.open-modal[data-modal="co2"]',
-  );
-  const closeBtn = modal?.querySelector(".modal-close");
+  function initModal() {
+    const modal = document.getElementById("co2-modal");
+    const modalTriggers = document.querySelectorAll(
+      '.open-modal[data-modal="co2"]',
+    );
+    const closeBtn = modal?.querySelector(".modal-close");
 
-  modalTriggers.forEach((trigger) => {
-    trigger.addEventListener("click", (e) => {
-      e.preventDefault();
-      modal?.classList.add("active");
-      document.body.style.overflow = "hidden";
+    if (!modal) return;
+
+    modalTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
     });
-  });
 
-  closeBtn?.addEventListener("click", () => {
-    modal?.classList.remove("active");
-    document.body.style.overflow = "";
-  });
-
-  modal?.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    closeBtn?.addEventListener("click", () => {
       modal.classList.remove("active");
       document.body.style.overflow = "";
-    }
-  });
+    });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal?.classList.contains("active")) {
-      modal?.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-  });
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("active")) {
+        modal.classList.remove("active");
+        document.body.style.overflow = "";
+      }
+    });
+  }
+
+  document.addEventListener("DOMContentLoaded", initModal);
+  document.addEventListener("astro:page-load", initModal);
 </script>
