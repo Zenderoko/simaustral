@@ -1,31 +1,113 @@
 ---
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = "Servicios de certificación y mantención de equipos marítimos, extintores, balsas salvavidas y trajes de inmersión en Chiloé, Chile.",
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteName = "SIMAUSTRAL";
+const imageUrl = "https://www.simaustral.cl/logo.png";
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Servicios de certificación y mantención de equipos marítimos"
-    />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="/logo.png" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Primary Meta Tags -->
+    <title>{title} | {siteName}</title>
+    <meta name="title" content={`${title} | ${siteName}`} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="certificación marítima, mantención equipos marítimos, extintores, balsas salvavidas, trajes inmersión, Chiloé, Dalcahue, Chile, seguridad marítima"
+    />
+    <meta name="author" content="SIMAUSTRAL" />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="Spanish" />
+    <meta name="revisit-after" content="7 days" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | ${siteName}`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:locale" content="es_CL" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={`${title} | ${siteName}`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={imageUrl} />
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "SIMAUSTRAL",
+        "description": "Servicios de certificación y mantención de equipos marítimos en Chiloé",
+        "url": "https://www.simaustral.cl",
+        "logo": "https://www.simaustral.cl/logo.png",
+        "telephone": "+56979799006",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "El Estero Nro 60",
+          "addressLocality": "Dalcahue",
+          "addressRegion": "Los Lagos",
+          "addressCountry": "CL"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -42.37478995189707,
+          "longitude": -73.64354166569402
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        "priceRange": "$$",
+        "areaServed": {
+          "@type": "State",
+          "name": "Los Lagos"
+        },
+        "serviceType": [
+          "Certificación de equipos marítimos",
+          "Mantención de extintores",
+          "Balsas salvavidas",
+          "Trajes de inmersión"
+        ]
+      }
+    </script>
+
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
     <ClientRouter />
   </head>
   <body>
@@ -41,7 +123,6 @@ const { title } = Astro.props;
           <a href="/galeria">Galería</a>
           <a href="/contacto">Contacto</a>
         </nav>
-
       </div>
     </header>
 
