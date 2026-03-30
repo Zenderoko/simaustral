@@ -21,7 +21,7 @@ const imageUrl = "https://www.simaustral.cl/logo.png";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon2.ico" />
     <meta name="generator" content={Astro.generator} />
 
     <!-- Canonical URL -->
@@ -75,8 +75,8 @@ const imageUrl = "https://www.simaustral.cl/logo.png";
         },
         "geo": {
           "@type": "GeoCoordinates",
-          "latitude": -42.37478995189707,
-          "longitude": -73.64354166569402
+          "latitude": -42.3752197,
+          "longitude": -73.6439136
         },
         "openingHoursSpecification": {
           "@type": "OpeningHoursSpecification",
@@ -140,6 +140,23 @@ const imageUrl = "https://www.simaustral.cl/logo.png";
           <h4>Contacto</h4>
           <p>El Estero Nro 60, Dalcahue, Chiloé</p>
           <p>+56979799006</p>
+          <a
+            href="https://www.google.com/maps?q=-42.374808397434855,-73.64348754750623"
+            target="_blank"
+            rel="noopener"
+            class="footer-map-link"
+          >
+            <iframe
+              src="https://www.google.com/maps?q=-42.374808397434855,-73.64348754750623&t=m&z=17&output=embed&iwloc=near"
+              width="180"
+              height="100"
+              style="border:0; border-radius: 6px;"
+              loading="lazy"
+              class="footer-map-iframe"
+            >
+            </iframe>
+            <span>Ver en Google Maps</span>
+          </a>
         </div>
         <div class="footer-section">
           <h4>Enlaces</h4>
@@ -273,6 +290,33 @@ const imageUrl = "https://www.simaustral.cl/logo.png";
 
   .footer-section a:hover {
     color: #fff;
+  }
+
+  .footer-map-link {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+  }
+
+  .footer-map-link:hover {
+    transform: scale(1.02);
+  }
+
+  .footer-map-iframe {
+    pointer-events: none;
+  }
+
+  .footer-map-link span {
+    font-size: 0.8rem;
+    color: #60a5fa;
+  }
+
+  .footer-map-link:hover span {
+    color: #93c5fd;
   }
 
   .footer-bottom {
