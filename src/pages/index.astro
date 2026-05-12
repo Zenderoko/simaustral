@@ -2,13 +2,14 @@
 import Layout from "../layouts/Layout.astro";
 import Balsas2Img from "../assets/balsas2.jpeg";
 import InmersionImg from "../assets/inmersion2.jpeg";
+import PirotecniaIcon from "../assets/pirotecnia-icon.jpg";
 import GcitecLogo from "../assets/gcitec-logo.png";
 import InprelabLogo from "../assets/Logo-Inprelab.jpeg";
 ---
 
 <Layout
   title="Inicio"
-  description="SIMAUSTRAL - Certificación y mantención de equipos marítimos en Chiloé. Balsas salvavidas, trajes de inmersión y extintores certificados. Servicio autorizado por DIRECTEMAR cumplimiento SOLAS."
+  description="SIMAUSTRAL - Certificación y mantención de equipos marítimos en Chiloé. Balsas salvavidas, trajes de inmersión y señales de salvamento certificados. Servicio autorizado por DIRECTEMAR cumplimiento SOLAS."
 >
   <section class="hero">
     <div class="hero-content">
@@ -16,7 +17,7 @@ import InprelabLogo from "../assets/Logo-Inprelab.jpeg";
       <div class="lema-container">
         <span class="lema-text">SIMAUSTRAL</span>
         <span class="lema-subtext"
-          >Donde la supervivencia en el mar es <strong>prioridad</strong></span
+          >La supervivencia en el mar, nuestra <strong>prioridad</strong></span
         >
       </div>
       <p>Servicios especializados con cumplimiento SOLAS</p>
@@ -178,12 +179,15 @@ import InprelabLogo from "../assets/Logo-Inprelab.jpeg";
             <p>Inspección, certificación y mantención</p>
           </div>
         </a>
-        <a href="#" class="servicio-item en-proceso">
-          <span class="servicio-icon">🔥</span>
-          <div class="badge-proceso">PRONTO</div>
+        <a href="/servicios/pirotecnia" class="servicio-item">
+          <img
+            src={PirotecniaIcon.src}
+            alt="Señales de Salvamento"
+            class="servicio-img"
+          />
           <div class="servicio-info">
-            <h3>Extintores de Incendio</h3>
-            <p>Recarga y certificación DS 44</p>
+            <h3>Señales de Salvamento</h3>
+            <p>Bengalas de Mano MK8, Bombas de Humo Comet y Cohetes SOLAS</p>
           </div>
         </a>
         <a href="/servicios/trajes-inmersion" class="servicio-item">
